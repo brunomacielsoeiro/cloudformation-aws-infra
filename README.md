@@ -4,6 +4,19 @@
 > Infraestrutura em Nuvem e Infraestrutura como Código (IaC) utilizando AWS
 > CloudFormation, para fins educacionais e cumprimento de horas complementares.
 
+## 📘 Guia prático de deploy com AWS CLI
+
+Este projeto inclui um guia resumido demonstrando como provisionar os recursos
+utilizando **AWS CLI em uma máquina desktop** e **AWS CloudFormation**.
+
+O guia aborda:
+- Autenticação na AWS via AWS CLI
+- Validação dos templates CloudFormation
+- Criação das stacks de S3 e Security Group
+
+👉 Consulte o guia: [docs/how-to-deploy-with-aws-cli.md](docs/how-to-deploy-with-aws-cli.md)
+``
+
 
 # 🔐 Decisões de Arquitetura - Amazon S3
 
@@ -26,4 +39,8 @@
   de sistemas web.
 - As regras de saída são explicitamente definidas para maior clareza e governança.
 - Tags padronizadas são utilizadas para organização e rastreabilidade dos recursos.
+
+
+
+
 
