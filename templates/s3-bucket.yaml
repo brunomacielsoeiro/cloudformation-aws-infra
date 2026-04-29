@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Template CloudFormation para criação de um bucket S3 básico para estudos
+
+Resources:
+  BucketEstudoCloudFormation:
+    Type: AWS::S3::Bucket
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
