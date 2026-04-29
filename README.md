@@ -1,5 +1,3 @@
-# cloudformation-aws-infra
-
 
 > 🎓 \*\*Contexto acadêmico\*\*
 > Este repositório foi utilizado como atividade prática de estudos sobre
@@ -7,7 +5,7 @@
 > CloudFormation, para fins educacionais e cumprimento de horas complementares.
 
 
-## Decisões de Arquitetura - Amazon S3
+# 🔐 Decisões de Arquitetura - Amazon S3
 
 - O template não fixa região da AWS, respeitando o princípio de reutilização
   entre múltiplas regiões.
