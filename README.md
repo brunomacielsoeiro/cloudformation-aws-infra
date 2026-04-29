@@ -1,2 +1,12 @@
 # cloudformation-aws-infra
-Projeto de estudos sobre Infraestrutura como Código (IaC) utilizando AWS CloudFormation, abordando a definição e organização de recursos em nuvem de forma declarativa. Atividade acadêmica para cumprimento de horas complementares.
+
+
+
+> 🎓 \*\*Contexto acadêmico\*\*
+
+> Este repositório foi utilizado como atividade prática de estudos sobre
+
+> Infraestrutura em Nuvem e Infraestrutura como Código (IaC) utilizando AWS
+
+> CloudFormation, para fins educacionais e cumprimento de horas complementares.
+
