@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Template CloudFormation para criação de um Security Group seguindo
+  boas práticas de segurança, segregação de ambientes e controle de acesso.
+  Projeto destinado a estudos de Infraestrutura como Código (IaC).
+
+Parameters:
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+    Description: ID da VPC onde o Security Group será criado.
+
+  Environment:
+    Type: String
+    AllowedValues:
+      - dev
+      - hom
+      - prod
+    Description: Ambiente do recurso.
+
+  AllowedSshCidr:
+    Type: String
+    Default: 0.0.0.0/0
+    Description: >
+      Bloco CIDR autorizado para acesso SSH.
+      Em ambientes produtivos, recomenda-se limitar este valor.
+
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group para instâncias EC2 - estudos
+      VpcId: !Ref VpcId
+
+      SecurityGroupIngress:
+        # SSH
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: !Ref AllowedSshCidr
+          Description: Acesso SSH controlado
+
+        # HTTP
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+          Description: Acesso HTTP público
+
+        # HTTPS
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+          Description: Acesso HTTPS público
+
+      SecurityGroupEgress:
+        # Libera saída para qualquer destino (padrão AWS)
+        - IpProtocol: -1
+          CidrIp: 0.0.0.0/0
+          Description: Saída liberada para comunicação externa
+
+      Tags:
+        - Key: Name
+          Value: !Sub sg-infra-${Environment}
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Project
+          Value: cloudformation-aws-infra
+        - Key: ManagedBy
+          Value: CloudFormation
+
+Outputs:
+  SecurityGroupId:
+    Description: ID do Security Group criado
+    Value: !Ref SecurityGroup
+
+  SecurityGroupName:
+    Description: Nome lógico do Security Group
+    Value: !GetAtt SecurityGroup.GroupName
